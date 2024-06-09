@@ -1,0 +1,38 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-md-8">
+        <app-stepper  #appStepper>
+            <cdk-step [label]="'Adresa'" [completed]="checkoutForm.get('addressForm')?.valid">
+                <app-checkout-address [checkoutForm]="checkoutForm"></app-checkout-address>
+            </cdk-step>
+            <cdk-step [label]="'Pregled'">
+                <app-checkout-review [appStepper]="appStepper"></app-checkout-review>
+            </cdk-step>
+            <cdk-step [label]="'Placanje'" [completed]="checkoutForm.get('paymentForm')?.valid">
+                <app-checkout-payment [checkoutForm]="checkoutForm"></app-checkout-payment>
+            </cdk-step>
+        </app-stepper>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Sažetak porudžbine</h5>
+            <div class="d-flex justify-content-between">
+              <span>Ukupan iznos:</span>
+              <span>{{ ukupanIznos | currency: 'RSD ' }}</span>
+            </div>
+            <div class="d-flex justify-content-between">
+              <span>Iznos isporuke:</span>
+              <span>{{ iznosIsporuke | currency: 'RSD ' }}</span>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between font-weight-bold">
+              <span><b>Ukupno za plaćanje:</b></span>
+              <span><b>{{ ukupanIznos + iznosIsporuke | currency: 'RSD ' }}</b></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

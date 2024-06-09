@@ -1,0 +1,25 @@
+<div class="row product-container" *ngIf="proizvod">
+    <div class="col-6 product-image">
+        <img src="{{proizvod.slikaURL}}" alt="{{proizvod.nazivProizvoda}}" class="w-100">
+    </div>
+    <div class="col-6 mt-5 product-details">
+        <h2>{{proizvod.nazivProizvoda}}</h2>
+        <p style="font-size: 2em;">{{proizvod.cena | currency:"RSD "}}</p>
+        <div class="d-flex justify-content-start align-items-center quantity-controls">
+            <div *ngIf="!isAdmin()">
+                <i class="fa fa-minus-circle text-warning me-2" style="cursor: pointer; font-size: 2em;" (click)="decrementKolicina()"></i>
+                <span class="font-weight-bold quantity" style="font-size: 1.5em;">{{ kolicina }}</span>
+                <i class="fa fa-plus-circle text-warning me-2" style="cursor: pointer; font-size: 2em;" (click)="incrementKolicina()"></i>
+                <button class="btn btn-outline-secondary ms-4 add-to-cart" (click)="addToCart()">Dodaj u korpu</button>
+            </div> 
+        </div>
+        <div class="row mt-4">
+            <h4>Opis proizvoda</h4>
+            <p>{{proizvod.opis}}</p>
+        </div>
+        
+        <div *ngIf="!dozvoljenaKolicina" class="alert alert-danger mt-3" role="alert">
+            Nije moguće dodati proizvod u korpu. Nedovoljna količina na stanju.
+        </div>
+    </div>
+</div>

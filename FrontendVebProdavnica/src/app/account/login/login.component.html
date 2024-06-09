@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center mt-5">
+    <div class="col-md-6">
+      <form class="p-5 rounded-3" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <h1 class="text-center mb-4" style="color: #212529; font-weight: 700;">Prijava</h1>
+        <div class="mb-4">
+          <label for="korisnickoIme" class="form-label" style="color: #495057;"><b>Korisnicko ime:</b></label>
+          <input
+            type="text"
+            id="korisnickoIme"
+            name="korisnickoIme"
+            class="form-control"
+            required
+            placeholder="Unesite korisnicko ime"
+            formControlName="korisnickoIme"
+            style="background-color: #ffffff; border: 1px solid #ced4da; border-radius: 8px;"
+          />
+          <div *ngIf="loginForm.get('korisnickoIme')?.invalid && loginForm.get('korisnickoIme')?.touched" class="text-danger">
+            <small *ngIf="loginForm.get('korisnickoIme')?.errors?.['required']">Korisnicko ime je obavezno</small>
+          </div>
+        </div>
+        <div class="mb-4">
+          <label for="lozinka" class="form-label" style="color: #495057;"><b>Lozinka:</b></label>
+          <input
+            type="password"
+            id="lozinka"
+            name="lozinka"
+            class="form-control"
+            required
+            placeholder="Unesite lozinku"
+            formControlName="lozinka"
+            style="background-color: #ffffff; border: 1px solid #ced4da; border-radius: 8px;"
+          />
+          <div *ngIf="loginForm.get('lozinka')?.invalid && loginForm.get('lozinka')?.touched" class="text-danger">
+            <small *ngIf="loginForm.get('lozinka')?.errors?.['required']">Lozinka je obavezna</small>
+            <small *ngIf="loginForm.get('lozinka')?.errors?.['minlength']">Lozinka mora imati najmanje 6 karaktera</small>
+          </div>
+        </div>
+        <div class="d-grid">
+          <button class="btn btn-lg btn-primary mt-3" type="submit" style="background-color: #007bff; border: none; border-radius: 8px;" [disabled]="loginForm.invalid">Prijavi se</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

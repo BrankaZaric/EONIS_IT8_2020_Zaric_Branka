@@ -1,0 +1,62 @@
+<div class="mt-4" *ngIf="checkoutForm" [formGroup]="checkoutForm" style="background-color: rgba(30, 112, 237, 0.5); padding: 20px;">
+    <div class="d-flex justify-content-between align-items-center">
+      <h4>Adresa</h4>
+      <button class="btn btn-outline-success mb-3" (click)="saveAddress()"
+              [disabled]="!checkoutForm.get('addressForm')?.valid || !checkoutForm.get('addressForm')?.dirty">
+        Sacuvaj adresu
+      </button>
+    </div>
+    <div class="row" formGroupName="addressForm">
+      <div class="form-group col-6 mb-4">
+        <input type="text" formControlName="firstName" class="form-control" id="floatingInput1" placeholder="Ime">
+        <div *ngIf="checkoutForm.get('addressForm')?.get('firstName')?.touched && checkoutForm.get('addressForm')?.get('firstName')?.invalid" class="invalid-feedback">
+          Unesite ime
+        </div>
+      </div>
+      <div class="form-group col-6 mb-4">
+        <input type="text" formControlName="lastName" class="form-control" id="floatingInput2" placeholder="Prezime">
+        <div *ngIf="checkoutForm.get('addressForm')?.get('lastName')?.touched && checkoutForm.get('addressForm')?.get('lastName')?.invalid" class="invalid-feedback">
+          Unesite prezime
+        </div>
+      </div>
+      <div class="form-group col-6 mb-4">
+        <input type="text" formControlName="street" class="form-control" id="floatingInput3" placeholder="Ulica">
+        <div *ngIf="checkoutForm.get('addressForm')?.get('street')?.touched && checkoutForm.get('addressForm')?.get('street')?.invalid" class="invalid-feedback">
+          Unesite ulicu
+        </div>
+      </div>
+      <div class="form-group col-6 mb-4">
+        <input type="text" formControlName="streetNumber" class="form-control" id="floatingInput4" placeholder="Broj">
+        <div *ngIf="checkoutForm.get('addressForm')?.get('streetNumber')?.touched && checkoutForm.get('addressForm')?.get('streetNumber')?.invalid" class="invalid-feedback">
+          Unesite broj ulice
+        </div>
+      </div>
+      <div class="form-group col-6 mb-4">
+        <input type="text" formControlName="zipcode" class="form-control" id="floatingInput5" placeholder="Poštanski broj">
+        <div *ngIf="checkoutForm.get('addressForm')?.get('zipcode')?.touched && checkoutForm.get('addressForm')?.get('zipcode')?.invalid" class="invalid-feedback">
+          Unesite poštanski broj
+        </div>
+      </div>
+      <div class="form-group col-6 mb-4">
+        <input type="text" formControlName="city" class="form-control" id="floatingInput6" placeholder="Mesto">
+        <div *ngIf="checkoutForm.get('addressForm')?.get('city')?.touched && checkoutForm.get('addressForm')?.get('city')?.invalid" class="invalid-feedback">
+          Unesite mesto
+        </div>
+      </div>
+      <div class="form-group col-6 mb-4">
+        <input type="text" formControlName="phoneNumber" class="form-control" id="floatingInput7" placeholder="Broj telefona">
+        <div *ngIf="checkoutForm.get('addressForm')?.get('phoneNumber')?.touched && checkoutForm.get('addressForm')?.get('phoneNumber')?.invalid" class="invalid-feedback">
+          Unesite broj telefona
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-between flex-row mb-5">
+      <button class="btn btn-outline-primary" (click)="deletePorudzbina()">
+        <i class="fa fa-angle-left"></i> Nazad do korpe
+      </button>
+      <button [disabled]="checkoutForm?.get('addressForm')?.invalid" class="btn btn-primary" cdkStepperNext>
+        <i class="fa fa-angle-right"></i> Napred do pregleda
+      </button>
+    </div>
+  </div>
+  

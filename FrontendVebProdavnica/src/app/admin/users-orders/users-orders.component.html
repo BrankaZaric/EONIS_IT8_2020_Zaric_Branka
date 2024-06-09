@@ -1,0 +1,21 @@
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Plaćene Porudžbine</h2>
+    <div *ngIf="placenePorudzbine.length > 0; else noOrders">
+      <div class="row">
+        <div class="col-md-6 mb-4" *ngFor="let porudzbina of placenePorudzbine">
+          <div class="card order-card">
+            <div class="card-body">
+              <h5 class="card-title">Porudžbina ID: {{ porudzbina.porudzbinaID }}</h5>
+              <p class="card-text">Status: {{ porudzbina.status }}</p>
+              <p class="card-text">Datum: {{ porudzbina.datum | date }}</p>
+              <p class="card-text">Ukupna cena: {{ porudzbina.iznos | currency }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noOrders>
+      <p class="text-center">Nema plaćenih porudžbina.</p>
+    </ng-template>
+  </div>
+  

@@ -1,0 +1,25 @@
+<h1>Uredi proizvod</h1>
+<form>
+  <div>
+    <label>Naziv proizvoda:</label>
+    <input type="text" [(ngModel)]="data.nazivProizvoda" name="nazivProizvoda">
+  </div>
+  <div>
+    <label>Opis:</label>
+    <textarea [(ngModel)]="data.opis" name="opis"></textarea>
+  </div>
+  <div>
+    <label>Cena:</label>
+    <input type="number" [(ngModel)]="data.cena" name="cena">
+  </div>
+  <div>
+    <label>Količina:</label>
+    <input type="number" [(ngModel)]="data.kolicina" name="kolicina">
+  </div>
+  <div>
+    <label>Slika URL:</label>
+    <input type="text" [(ngModel)]="data.slikaURL" name="slikaURL">
+  </div>
+  <button mat-button (click)="onCancelClick()">Otkaži</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Spremi izmjene</button>
+</form>

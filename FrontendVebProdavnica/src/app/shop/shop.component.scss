@@ -1,0 +1,33 @@
+.search-box input {
+    width: 300px;
+    height: 40px;
+    border: 3px solid #ccc; /* Dodaj stil i boju borderu */
+    outline: none;
+    background: white;
+    border-radius: 30px;
+    font-size: 16px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Dodaj blagi shadow za lepši izgled */
+    padding: 0 15px; /* Dodaj padding za bolji razmak unutar inputa */
+}
+/* Opcionalno: Hover efekat */
+.search-box input:hover {
+    border-color: #888; /* Promeni boju bordera pri hoveru */
+}
+
+/* Opcionalno: Fokus efekat */
+.search-box input:focus {
+    border-color: #555; /* Promeni boju bordera pri fokusu */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Pojačaj shadow pri fokusu */
+}
+.search-box button {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 30px;
+    border: none;
+    top: 0;
+    right: 0;
+    transform: scale(0.9);
+    background: yellowgreen;
+}

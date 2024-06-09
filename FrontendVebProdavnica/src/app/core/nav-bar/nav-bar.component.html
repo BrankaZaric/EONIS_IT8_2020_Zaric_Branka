@@ -1,0 +1,67 @@
+<body>
+    <header>
+        <input type="checkbox" name="" id="chk1">
+        <div class="logo" routerLink="/"><h1>KIDS ZONE</h1></div>
+        <ul>
+            <li>
+                <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Pocetna</a>
+            </li>
+            <li>
+                <a routerLink="/shop" routerLinkActive="active">Shop</a>
+            </li>
+            <li class="cart" *ngIf="accountService.currentUser$ | async as user">
+                <a routerLink="/cart" *ngIf="!isAdmin()">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span class="cart-count">{{ totalItems }}</span>
+                </a>
+            </li>
+            <li>
+                <ng-container *ngIf="(accountService.currentUser$ | async) === null">
+                    <a routerLink="/account/login">Prijava</a>
+                    <a routerLink="/account/register">Registracija</a>
+                </ng-container>
+
+                <ng-container *ngIf="accountService.currentUser$ | async as user">
+                    <div class="dropdown ms-3 me-5" style="cursor: pointer;" dropdown>
+                        <a dropdownToggle class="dropdown-toggle">
+                            <strong>{{ getUserName(user) }}</strong>
+                        </a>
+                        <ul *dropdownMenu class="dropdown-menu dropdown-menu-right">
+                            <ng-container *ngIf="!isAdmin()">
+                                <li class="py-1">
+                                    <a routerLink="/orders" class="dropdown-item">
+                                        <i class="fa fa-history me-3"></i>Pregledaj porudzbine
+                                    </a>
+                                </li>
+                                <div class="dropdown-divider"></div>
+                            </ng-container>
+                            <ng-container *ngIf="isAdmin()">
+                                <li class="py-1">
+                                    <a class="dropdown-item" routerLink="/admin/users">
+                                        <i class="fa fa-users me-3"></i>Korisnici
+                                    </a>
+                                </li>
+                                <li class="py-1">
+                                    <a class="dropdown-item" routerLink="/admin/users-orders">
+                                        <i class="fa fa-users me-3"></i>Placene porudzbine
+                                    </a>
+                                </li>
+                                <div class="dropdown-divider"></div>
+                            </ng-container>
+                            <li class="py-1">
+                                <a (click)="accountService.logout()" class="dropdown-item">
+                                    <i class="fa fa-sign-out me-3"></i>Odjavi se
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </ng-container>
+            </li>
+        </ul>
+        <div class="menu">
+            <label for="chk1">
+                <i class="fa fa-bars"></i>
+            </label>
+        </div>
+    </header>
+</body>

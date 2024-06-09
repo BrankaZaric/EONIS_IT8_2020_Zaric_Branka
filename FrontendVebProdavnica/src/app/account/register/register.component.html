@@ -1,0 +1,71 @@
+<div class="d-flex justify-content-center mt-5">
+    <div class="col-md-6">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="text-center mb-4">
+                <h1 class="mb-3">Registracija</h1>
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" class="form-control" formControlName="email">
+                <div *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid" class="text-danger">
+                    <small *ngIf="registerForm.get('email')?.errors?.['required']">Email je obavezan</small>
+                    <small *ngIf="registerForm.get('email')?.errors?.['email']">Nevazeci format email-a</small>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="lozinka" class="form-label">Lozinka</label>
+                <input type="password" id="lozinka" class="form-control" formControlName="lozinka">
+                <div *ngIf="registerForm.get('lozinka')?.touched && registerForm.get('lozinka')?.invalid" class="text-danger">
+                    <small *ngIf="registerForm.get('lozinka')?.errors?.['required']">Lozinka je obavezna</small>
+                    <small *ngIf="registerForm.get('lozinka')?.errors?.['pattern']">Lozinka mora da sadrzi 6-10 karaktera</small>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="ime" class="form-label">Ime</label>
+                <input type="text" id="ime" class="form-control" formControlName="ime">
+                <div *ngIf="registerForm.get('ime')?.touched && registerForm.get('ime')?.invalid" class="text-danger">
+                    <small *ngIf="registerForm.get('ime')?.errors?.['required']">Ime je obavezno</small>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="prezime" class="form-label">Prezime</label>
+                <input type="text" id="prezime" class="form-control" formControlName="prezime">
+                <div *ngIf="registerForm.get('prezime')?.touched && registerForm.get('prezime')?.invalid" class="text-danger">
+                    <small *ngIf="registerForm.get('prezime')?.errors?.['required']">Prezime je obavezno</small>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="korisnickoIme" class="form-label">Username</label>
+                <input type="text" id="korisnickoIme" class="form-control" formControlName="korisnickoIme">
+                <div *ngIf="registerForm.get('korisnickoIme')?.touched && registerForm.get('korisnickoIme')?.invalid" class="text-danger">
+                    <small *ngIf="registerForm.get('korisnickoIme')?.errors?.['required']">Username is required</small>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="adresa" class="form-label">Adresa</label>
+                <input type="text" id="adresa" class="form-control" formControlName="adresa" placeholder="Ulica, broj ulice, Postanski broj, Grad">
+                <div *ngIf="registerForm.get('adresa')?.touched && registerForm.get('adresa')?.invalid" class="text-danger">
+                    <small *ngIf="registerForm.get('adresa')?.errors?.['required']">Adresa je obavezna</small>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="telefon" class="form-label">Broj telefona</label>
+                <input type="text" id="telefon" class="form-control" formControlName="telefon">
+                <div *ngIf="registerForm.get('telefon')?.touched && registerForm.get('telefon')?.invalid" class="text-danger">
+                    <small *ngIf="registerForm.get('telefon')?.errors?.['required']">Broj telefona je obavezan</small>
+                </div>
+            </div>
+
+            <div class="d-grid">
+                <button [disabled]="registerForm.invalid" class="btn btn-lg btn-primary mt-3" type="submit">Registruj se</button>
+            </div>
+        </form>
+    </div>
+</div>
