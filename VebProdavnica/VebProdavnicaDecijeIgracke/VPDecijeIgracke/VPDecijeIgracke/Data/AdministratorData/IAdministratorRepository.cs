@@ -13,5 +13,7 @@ namespace VPDecijeIgracke.Data.AdministratorData
         Task<bool> SaveChanges();
 
         Task<Administrator> GetKAdministratorByKorisnickoIme(string korisnickoImeAdmin);
+
+        Task<Administrator> GetAdministratorLozinkaById(int administratorID);
     }
 }

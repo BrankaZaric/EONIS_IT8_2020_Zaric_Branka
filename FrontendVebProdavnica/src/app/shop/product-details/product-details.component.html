@@ -17,7 +17,14 @@
             <h4>Opis proizvoda</h4>
             <p>{{proizvod.opis}}</p>
         </div>
-        
+        <div>
+            <div *ngIf="isAdmin()">
+                <button class="btn btn-danger mb-3" (click)="obrisiProizvod()">Obrisi proizvod</button>
+            </div>
+            <div *ngIf="isAdmin()">
+                <button class="btn btn-primary mb-3" (click)="izmeniProizvod()">Izmeni proizvod</button>
+            </div>
+        </div>
         <div *ngIf="!dozvoljenaKolicina" class="alert alert-danger mt-3" role="alert">
             Nije moguće dodati proizvod u korpu. Nedovoljna količina na stanju.
         </div>

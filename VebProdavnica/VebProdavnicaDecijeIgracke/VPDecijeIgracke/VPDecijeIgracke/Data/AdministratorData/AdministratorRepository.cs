@@ -26,6 +26,11 @@ namespace VPDecijeIgracke.Data.AdministratorData
             return await context.Administrator.FirstOrDefaultAsync(a => a.AdminID == administratorID);
         }
 
+        public async Task<Administrator> GetAdministratorLozinkaById(int administratorID)
+        {
+            return await context.Administrator.FirstOrDefaultAsync(a => a.AdminID == administratorID);
+        }
+
         public async Task<AdministratorConfirmation> CreateAdministrator(Administrator administrator)
         {
             var createdEntity = await context.AddAsync(administrator);

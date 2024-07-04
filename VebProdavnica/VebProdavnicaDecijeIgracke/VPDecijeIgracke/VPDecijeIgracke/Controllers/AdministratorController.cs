@@ -56,6 +56,22 @@ namespace VPDecijeIgracke.Controllers
             return Ok(mapper.Map<AdministratorDTO>(administrator));
         }
 
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [HttpGet("lozinka/{administratorId}")]
+        [EnableCors("AllowOrigin")]
+        public async Task<ActionResult<AdministratorLozinkaDTO>> GetAdministratorLozinkaById(int administratorId)
+        {
+            var administrator = await administratorRepository.GetAdministratorLozinkaById(administratorId);
+
+            if (administrator == null)
+            {
+                return NotFound("Administrator sa datim ID-jem ne postoji.");
+            }
+
+            return Ok(mapper.Map<AdministratorLozinkaDTO>(administrator));
+        }
+
         [HttpPost]
         [Consumes("application/json")]
         [ProducesResponseType(StatusCodes.Status201Created)]

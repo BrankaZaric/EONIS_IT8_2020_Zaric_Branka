@@ -10,15 +10,13 @@ import { HomeModule } from './home/home.module';
 import { ErrorInterceptor } from './error.interceptor';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AdminModule } from './admin/admin.module';
-import { ProductUpdateFormComponent } from './product-update-form/product-update-form.component';
 import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ProductUpdateFormComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,

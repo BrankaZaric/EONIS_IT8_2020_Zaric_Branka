@@ -1,0 +1,44 @@
+<div class="modal-header">
+    <h4 *ngIf="flag === 1" class="modal-title">Dodaj proizvod</h4>
+    <h4 *ngIf="flag === 2" class="modal-title">Izmeni proizvod</h4>
+    <h4 *ngIf="flag === 3" class="modal-title">Obriši proizvod</h4>
+</div>
+<div class="modal-body">
+    <form (ngSubmit)="saveModal()">
+        <div class="form-group mb-2">
+            <label for="nazivProizvoda">Naziv proizvoda:</label>
+            <input type="text" class="form-control" id="nazivProizvoda" name="nazivProizvoda" [(ngModel)]="nazivProizvoda" required [disabled]="flag === 3">
+        </div>
+        <div class="form-group mb-2">
+            <label for="opis">Opis:</label>
+            <textarea class="form-control" id="opis" name="opis" [(ngModel)]="opis" required [disabled]="flag === 3"></textarea>
+        </div>
+        <div class="form-group mb-2">
+            <label for="cena">Cena:</label>
+            <input type="number" class="form-control" id="cena" name="cena" [(ngModel)]="cena" required [disabled]="flag === 3">
+        </div>
+        <div class="form-group mb-2">
+            <label for="kolicina">Količina:</label>
+            <input type="number" class="form-control" id="kolicina" name="kolicina" [(ngModel)]="kolicina" required [disabled]="flag === 3">
+        </div>
+        <div class="form-group mb-2">
+            <label for="slikaURL">URL slike:</label>
+            <input type="text" class="form-control" id="slikaURL" name="slikaURL" [(ngModel)]="slikaURL" [disabled]="flag === 3">
+        </div>
+        <div class="form-group mb-2">
+            <label for="kategorijaID">Kategorija:</label>
+            <select class="form-control" id="kategorijaID" name="kategorijaID" [(ngModel)]="kategorijaID" required [disabled]="flag === 3">
+                <option *ngFor="let kategorija of kategorije" [value]="kategorija.kategorijaID" [ngValue]="kategorija.kategorijaID">{{ kategorija.nazivKategorije }}</option>
+            </select>
+        </div>
+        <div class="form-group mb-2">
+            <label for="adminID">Administrator:</label>
+            <input type="number" class="form-control" id="adminID" name="adminID" [(ngModel)]="adminID" required [disabled]="flag === 3">
+        </div>
+        <div class="modal-footer">
+            <button *ngIf="flag === 1 || flag === 2" type="submit" class="btn btn-primary">Sačuvaj</button>
+            <button *ngIf="flag === 3" type="button" class="btn btn-danger" (click)="deleteModal()">Obriši</button>
+            <button type="button" class="btn btn-secondary" (click)="closeModal()">Zatvori</button>
+        </div>
+    </form>
+</div>

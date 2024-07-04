@@ -4,16 +4,21 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { AdminRoutingModule } from './admin-routing.module';
 import { UsersComponent } from './users/users.component';
 import { UsersOrdersComponent } from './users-orders/users-orders.component';
+import { ProductDialogComponent } from './product-dialogs/product-dialog/product-dialog.component';
+import { FormsModule } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 
 
 @NgModule({
   declarations: [
     UsersComponent,
-    UsersOrdersComponent
+    UsersOrdersComponent,
+    ProductDialogComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
+    FormsModule,
     ModalModule.forRoot()
   ]
 })

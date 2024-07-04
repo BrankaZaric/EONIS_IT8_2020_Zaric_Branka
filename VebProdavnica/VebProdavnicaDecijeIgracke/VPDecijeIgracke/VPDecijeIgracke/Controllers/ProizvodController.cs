@@ -82,7 +82,7 @@ namespace VPDecijeIgracke.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [EnableCors("AllowOrigin")]
-        //[Authorize(Policy = IdentityData.AdministratorPolicy)]
+        [Authorize(Policy = IdentityData.AdministratorPolicy)]
         public async Task<ActionResult<ProizvodConfirmation>> CreateProizvod([FromBody] ProizvodCreationDTO proizvod)
         {
             try
@@ -165,7 +165,7 @@ namespace VPDecijeIgracke.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [EnableCors("AllowOrigin")]
         [HttpDelete("{proizvodId}")]
-        //[Authorize(Policy = IdentityData.AdministratorPolicy)]
+        [Authorize(Policy = IdentityData.AdministratorPolicy)]
         public async Task<ActionResult> DeleteProizvod(int proizvodId)
         {
             try

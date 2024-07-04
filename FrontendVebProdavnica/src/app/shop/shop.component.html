@@ -7,7 +7,9 @@
                     {{sort.name}}
                 </option>
             </select>
-        
+            <div *ngIf="isAdmin()">
+                <button class="btn btn-primary mb-3" (click)="openProductDialog()">Dodaj proizvod</button>
+            </div>
             <h5 class="text-warning my-3">Kategorije</h5>
                 <ul class="list-group">
                     <li class="list-group-item" 

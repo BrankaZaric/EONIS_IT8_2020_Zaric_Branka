@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Proizvod, ProizvodUpdate } from 'src/app/shared/models/proizvod';
+import { Proizvod } from 'src/app/shared/models/proizvod';
 import { ShopService } from '../shop.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from 'src/app/cart/cart.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ProductUpdateFormComponent } from 'src/app/product-update-form/product-update-form.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ProductDialogComponent } from 'src/app/admin/product-dialogs/product-dialog/product-dialog.component';
 
 @Component({
   selector: 'app-product-details',
@@ -20,43 +20,13 @@ export class ProductDetailsComponent implements OnInit {
   constructor(private shopService: ShopService, 
               private activatedRoute: ActivatedRoute, 
               private cartService: CartService,
-              private dialog: MatDialog,
-              private snackBar: MatSnackBar) {}
+              private snackBar: MatSnackBar,
+              private router: Router,
+              private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.loadProizvod();
   }
-
-  /*openEditDialog(): void {
-    const dialogRef = this.dialog.open(ProductUpdateFormComponent, {
-      width: '400px',
-      data: { ...this.proizvod } as ProizvodUpdate
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
-      if (result) {
-        this.updateProizvod(result);
-      }
-    });
-  }*/
-
-  /*updateProizvod(proizvod: ProizvodUpdate): void {
-    this.shopService.updateProizvod(proizvod).subscribe(
-      updatedProizvod => {
-        this.proizvod = updatedProizvod;
-        this.snackBar.open('Proizvod uspješno ažuriran', 'Zatvori', {
-          duration: 2000,
-        });
-      },
-      error => {
-        console.error('Greška prilikom ažuriranja proizvoda:', error);
-        this.snackBar.open('Došlo je do greške prilikom ažuriranja proizvoda', 'Zatvori', {
-          duration: 2000,
-        });
-      }
-    );
-  }*/
 
   isAdmin(): boolean {
     const isAdmin = localStorage.getItem('isAdmin');
@@ -89,4 +59,39 @@ export class ProductDetailsComponent implements OnInit {
       this.dozvoljenaKolicina = false;
     }
   }
+
+  obrisiProizvod() {
+    if (this.proizvod?.proizvodID) {
+      this.shopService.deleteProizvod(this.proizvod.proizvodID).subscribe({
+        next: () => {
+          this.snackBar.open('Proizvod je uspešno obrisan!', 'Zatvori', {
+            duration: 3000,
+          });
+          this.router.navigate(['/shop']);  // Navigirajte korisnika nazad na listu proizvoda
+        },
+        error: error => {
+          this.snackBar.open('Došlo je do greške prilikom brisanja proizvoda.', 'Zatvori', {
+            duration: 3000,
+          });
+          console.log(error);
+        }
+      });
+    }
+  }
+
+  izmeniProizvod() {
+    if (this.proizvod) {
+      const dialogRef = this.dialog.open(ProductDialogComponent, {
+        width: '600px',
+        data: { ...this.proizvod, flag: 2 }
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.loadProizvod();
+        }
+      });
+    }
+  }
+  
 }

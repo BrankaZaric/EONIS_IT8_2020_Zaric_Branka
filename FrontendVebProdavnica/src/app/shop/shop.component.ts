@@ -3,6 +3,9 @@ import { Proizvod } from '../shared/models/proizvod';
 import { ShopService } from './shop.service';
 import { Kategorija } from '../shared/models/kategorija';
 import { ShopParams } from '../shared/models/shopParams';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { ProductDialogComponent } from '../admin/product-dialogs/product-dialog/product-dialog.component';
+import { MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-shop',
@@ -20,14 +23,21 @@ export class ShopComponent implements OnInit {
     {name: 'Cena: najskuplje do najjeftinije', value:'cenaDesc'},
   ];
   totalCount = 0;
+  bsModalRef!: BsModalRef;
 
-  constructor(private shopService: ShopService) { }
+  constructor(private shopService: ShopService,
+                        private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getProizvodi();
     this.getKategorije();
   }
 
+  isAdmin(): boolean {
+    const isAdmin = localStorage.getItem('isAdmin');
+    return isAdmin === "true";
+  } 
+  
   getProizvodi(){
     this.shopService.getProizvodi(this.shopParams).subscribe({
       next: response => {
@@ -77,5 +87,18 @@ export class ShopComponent implements OnInit {
     if(this.searchTerm) this.searchTerm.nativeElement.value = '';
     this.shopParams = new ShopParams();
     this.getProizvodi();
+  }
+
+  openProductDialog() {
+    const dialogRef = this.dialog.open(ProductDialogComponent, {
+      width: '400px',
+      data: { flag: 1 }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getProizvodi();
+      }
+    });
   }
 }
