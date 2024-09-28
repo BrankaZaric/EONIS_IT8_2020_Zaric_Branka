@@ -4,8 +4,13 @@
     "\\VebProdavnicaDecijeIgracke",
     "\\VebProdavnicaDecijeIgracke\\VPDecijeIgracke",
     "\\VebProdavnicaDecijeIgracke\\VPDecijeIgracke\\VPDecijeIgracke",
-    "\\VebProdavnicaDecijeIgracke\\VPDecijeIgracke\\VPDecijeIgracke\\Controllers"
+    "\\VebProdavnicaDecijeIgracke\\VPDecijeIgracke\\VPDecijeIgracke\\Context",
+    "\\VebProdavnicaDecijeIgracke\\VPDecijeIgracke\\VPDecijeIgracke\\Controllers",
+    "\\VebProdavnicaDecijeIgracke\\VPDecijeIgracke\\VPDecijeIgracke\\Data",
+    "\\VebProdavnicaDecijeIgracke\\VPDecijeIgracke\\VPDecijeIgracke\\Data\\KorisnikData",
+    "\\VebProdavnicaDecijeIgracke\\VPDecijeIgracke\\VPDecijeIgracke\\Models",
+    "\\VebProdavnicaDecijeIgracke\\VPDecijeIgracke\\VPDecijeIgracke\\Models\\KorisnikModel"
   ],
-  "SelectedNode": "\\VebProdavnicaDecijeIgracke\\VPDecijeIgracke\\VPDecijeIgracke\\Controllers\\AdministratorController.cs",
+  "SelectedNode": "\\VebProdavnicaDecijeIgracke\\VPDecijeIgracke\\VPDecijeIgracke\\Controllers\\PaymentController.cs",
   "PreviewInSolutionExplorer": false
 }
