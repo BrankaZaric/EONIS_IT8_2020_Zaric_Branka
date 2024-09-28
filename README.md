@@ -34,4 +34,19 @@ Prva stranica koja se prikazuje na sajtu jeste *Početna stranica* na kojoj je d
 | sortiranje proizvoda   | Proizvode je moguće sortirati po nazivu, po ceni - od najjeftinijeg do najskupljeg ili obrnuto, ali moguće je i prikazati sve dostupne proizvode.   |
 | pretraga proizvoda   | Unošenjem slova ili konkretne reči u polje za pretragu izlistavaju se proizvodi ukoliko su dostupni.  |
 | kategorija proizvoda   | Odabirom određene kategorije, prikazuju se proizvodi koji im pripadaju.   |
+| pregled detalja proizvoda   | Prilikom pregleda proizvoda, prelaskom preko određenog proizvoda nude se opcije Add to cart i View. Odabirom View opcije moguće je pregledati detaljniji opis proizvoda, cenu, dodati proizvod u korpu i slično   |
+| pregled korpe   | U okviru navigacinog bara postoji simbol korpe sa brojem proizvoda koji su dodati u korpu. Prilikom provere dodatih proizvoda u korpu moguće je ažurirati stanje odnosno smanjiti ili dodati količinu određenog proizvoda, kao i ukloniti određeni proizvod.  |
+| plaćanje   | Ukoliko se korisnik odluči da potvrdi porudžbinu i izvrši plaćanje, prelaskom na tu funkciju popunjavaju se forme u tri koraka. Prvi korak podrazumeva popunjavanje adrese i podataka korisnika, potom se vrši konačni pregled porudžbine, dok treći korak obuhvata popunjavanje podataka sa kartice koja može biti validna ili nevalidna. Ukoliko je validna, porudžbina će biti prihvaćena, dok se u suprotnom dobija poruka o problemu.   |
+| upravljanje proizvodima   | Administrator je u mogućnosti da izvrši dodavanje novog proizvoda, ažuriranje već postojećeg ili brisanje proizvoda.   |
+| upravljanje korisnicima   | Administrator takođe može pregledati korisnike, kao i porudžbine koje su oni izvršili.   |
+| pregled porudžbina   | Pored svih porudžbina koje su korisnici kreirali, administrator može pregledati i porudžbine koje su plaćene.   |
+
+
+Veb-aplikaciju je moguće proširiti sa dodatnim funkcionalnostima, poboljšanjima korisničkog interfejsa, ali na primer i povezivanjem sa eksternim API-jima.
+
+
+
+
+
+
 
